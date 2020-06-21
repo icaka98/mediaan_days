@@ -60,6 +60,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Hristo Minkov - minkov.h@gmail.com
 
 Project Link: [https://mediaan-days.herokuapp.com/](https://mediaan-days.herokuapp.com/)
+
 Codebase Link: [https://github.com/icaka98/mediaan_days](https://github.com/icaka98/mediaan_days)
 
 
