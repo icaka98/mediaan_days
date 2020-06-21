@@ -1,0 +1,23 @@
+.Red::-webkit-input-placeholder {
+    color: red; /* WebKit, Blink, Edge */
+}
+
+.Red:-moz-placeholder {
+    color: red; /* Mozilla Firefox 4 to 18 */
+}
+
+.Red::-moz-placeholder {
+    color: red; /* Mozilla Firefox 19+ */
+}
+
+.Red::-ms-input-placeholder {
+    color: red; /* Microsoft Edge */
+}
+
+.Red:-ms-input-placeholder {
+    color: red; /* Internet Explorer 10-11 */
+}
+
+.Red::placeholder {
+    color: red; /* Most modern browsers support this now. */
+}

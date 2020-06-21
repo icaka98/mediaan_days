@@ -1,0 +1,1 @@
+web: gunicorn mediaan_days.wsgi --log-file - --log-level debug

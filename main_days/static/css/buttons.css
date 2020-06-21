@@ -1,0 +1,121 @@
+.svg-wrapper {
+  margin-top: 0;
+  position: absolute;
+  width: 240px;
+  height: 60px;
+  display: inline-block;
+  border-radius: 5px;
+  margin-left: 3px;
+  margin-right: 5px
+}
+
+#shape {
+      stroke-width: 6px;
+      fill: transparent;
+      stroke: #009FFD;
+      stroke-dasharray: 185 400;
+      stroke-dashoffset: 270;
+      transition: 1s all ease;
+}
+
+#text {
+    margin-top: -42px;
+    text-align: center;
+}
+
+#text a {
+    text-decoration: none;
+    font-size: 2.1em;
+    font-family: monospace;
+    font-weight: bold;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+}
+
+.svg-wrapper:hover #shape {
+  stroke-dasharray: 50 0;
+  stroke-width: 5px;
+  stroke-dashoffset: 0;
+  stroke: #06D6A0;
+}
+
+#eight_hours{
+    top: 75%;
+    left: 1%;
+    cursor: pointer;
+}
+
+#four_hours{
+    top: 65%;
+    left: 1%;
+    cursor: pointer;
+}
+
+#add_day_off{
+    top: 75%;
+    right: 1%;
+    cursor: pointer;
+}
+
+#toggle_days_off{
+    top: 13%;
+    right: 1%;
+}
+
+#toggle_work_days{
+    top: 13%;
+    right: 18%;
+}
+
+#date{
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: monospace;
+    font-weight: bold;
+    color: #daf6ff !important;
+    text-align: center;
+    border: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    letter-spacing: 0.05em;
+}
+
+.gj-icon{
+    color: #daf6ff !important;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+}
+
+#from{
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: monospace;
+    font-weight: bold;
+    color: #daf6ff !important;
+    text-align: center;
+    border: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    letter-spacing: 0.05em;
+}
+
+#to{
+    position: absolute;
+    right: 3%;
+    top: 60%;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: monospace;
+    font-weight: bold;
+    color: #daf6ff !important;
+    text-align: center;
+    border: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    letter-spacing: 0.05em;
+}

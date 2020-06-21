@@ -1,0 +1,94 @@
+/* DAYS OFF POPUP*/
+#days_off_window{
+    position: absolute;
+    left: 72.7%;
+    top: 22%;
+    width: 25%;
+    height: 65%;
+    background-color: transparent;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    border-radius: 23px;
+    border: 4px dashed #0AAFE6;
+}
+
+#days_off_window li {
+    padding: 10px 6px;
+    border: 1px solid transparent;
+}
+
+/*#days_off_window li:last-child {
+    border-bottom: 1.5px solid #000000;
+}*/
+
+#days_off_window li:nth-child(even) {
+    background: transparent;
+}
+
+#days_off_window ul {
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      overflow: scroll;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      border: 2px solid transparent;
+      -webkit-overflow-scrolling: touch;
+}
+
+/* WORK DAYS POPUP*/
+#work_days_window{
+    position: absolute;
+    left: 72.7%;
+    top: 22%;
+    width: 25%;
+    height: 65%;
+    background-color: transparent;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    border-radius: 23px;
+    border: 4px dashed #0AAFE6;
+}
+
+#work_days_window li {
+    padding: 10px 6px;
+    border: 1px solid transparent;
+}
+
+/*#days_off_window li:last-child {
+    border-bottom: 1.5px solid #000000;
+}*/
+
+#work_days_window li:nth-child(even) {
+    background: transparent;
+}
+
+#work_days_window ul {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  border: 2px solid transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}

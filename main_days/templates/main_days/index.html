@@ -1,0 +1,238 @@
+{% load static %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+        <script src="{% static 'js/timer.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/placeholder_error.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/popup_windows.css' %}">
+    </head>
+
+    <body>
+        <div id="clock">
+            <p class="date">{{ date }}</p>
+            <p class="time">{{ time }}</p>
+            <p class="period_num">Period {{ period_num }}</p>
+        </div>
+
+        <div id="logo">
+            <img src="{% static 'images/mediaan.png' %}" />
+        </div>
+
+        <div id="days_left">
+            <p class="text">{{ days_left }} days left.</p>
+            <p class="hours">{{ hours_left }} hours to go.</p>
+        </div>
+
+        <div id="expected_day">
+            <p class="vacation_left">{{ vacation_left }} vacation days left.</p>
+            <p class="expected">Expected summer start: {{ last_day }}</p>
+        </div>
+
+        {% if is_not_mobile %}
+        <div id="exams_info_div">
+            <p class="exams_info">{{ exams_info }}</p>
+        </div>
+
+        <div id="periods_info_div">
+            <p class="periods_info">{{ periods_info }}</p>
+        </div>
+        {% endif %}
+
+        <form id="hours_form" action="/days/add_day/" method="get">
+            {% csrf_token %}
+
+            <div id="four_hours" class="svg-wrapper">
+              <svg height="50" width="240" xmlns="http://www.w3.org/2000/svg">
+                <rect id="shape" height="50" width="240"></rect>
+                <div id="text">
+                  <a onclick="document.getElementById('hours_in').value = '4';
+                    submit_hours_form()"><span class="spot"></span>4 HOURS</a>
+                </div>
+              </svg>
+            </div>
+
+            <div id="eight_hours" class="svg-wrapper">
+              <svg height="50" width="240" xmlns="http://www.w3.org/2000/svg">
+                <rect id="shape" height="50" width="240"></rect>
+                <div id="text">
+                  <a onclick="document.getElementById('hours_in').value = '8';
+                    submit_hours_form()"><span class="spot"></span>8 HOURS</a>
+                </div>
+              </svg>
+            </div>
+
+            <input id="hours_in" type="hidden" name="hours" hidden value="8"/>
+
+            <div id="date">
+                <input type="text" name="date" style="
+                    color:#daf6ff;
+                    text-align: center;
+                    font-size: 1.2em;
+                    border-bottom: #009FFD 2px solid;
+                    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+                    letter-spacing: 0.08em;
+                    align-content: center;" id="datepicker" width="190" placeholder="DATE" required/>
+            </div>
+        </form>
+
+        <form id="off_days" action="/days/add_off_days/" method="get">
+            {% csrf_token %}
+
+            <div id="from">
+                <input type="text" name="from" style="
+                    color:#daf6ff;
+                    text-align: center;
+                    font-size: 1.2em;
+                    border-bottom: #009FFD 2px solid;
+                    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+                    letter-spacing: 0.08em;
+                    align-content: center;" id="frompicker" width="190" placeholder="FROM" required />
+            </div>
+
+            <div id="to">
+                <input type="text" name="to" style="
+                    color:#daf6ff;
+                    text-align: center;
+                    font-size: 1.2em;
+                    border-bottom: #009FFD 2px solid;
+                    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+                    letter-spacing: 0.08em;
+                    align-content: center;" id="topicker" width="190" placeholder="TO" required />
+            </div>
+
+            <div id="add_day_off" class="svg-wrapper">
+              <svg height="50" width="240" xmlns="http://www.w3.org/2000/svg">
+                <rect id="shape" height="50" width="240"></rect>
+                <div id="text">
+                  <a onclick="submit_off_days_form()"><span class="spot"></span>ADD</a>
+                </div>
+              </svg>
+            </div>
+        </form>
+
+        {% if is_not_mobile %}
+        <div id="toggle_days_off" class="svg-wrapper">
+          <svg height="50" width="240" xmlns="http://www.w3.org/2000/svg">
+            <rect id="shape" height="50" width="240"></rect>
+            <div id="text">
+              <a id='txt_off' style="font-size: 1.6em" href="#"><span class="spot"></span>SHOW DAYS OFF</a>
+            </div>
+          </svg>
+        </div>
+
+        <div id="toggle_work_days" class="svg-wrapper">
+          <svg height="50" width="240" xmlns="http://www.w3.org/2000/svg">
+            <rect id="shape" height="50" width="240"></rect>
+            <div id="text">
+              <a id='txt_work' style="font-size: 1.6em" href="#"><span class="spot"></span>SHOW WORK DAYS</a>
+            </div>
+          </svg>
+        </div>
+
+        <div id="days_off_window">
+            <ul>
+                <li style="font-size: 1.5em; font-weight: bolder">DAYS OFF</li>
+                {% for off_day in all_days_off %}
+                    <li> From {{ off_day.from_day }} to {{ off_day.to_day }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="work_days_window">
+            <ul>
+                <li style="font-size: 1.5em; font-weight: bolder">WORK DAYS</li>
+                {% for work_day in all_work_days %}
+                    <li> On {{ work_day.day }} worked {{ work_day.hours }} hours.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <script>
+            function submit_hours_form(){
+                if(document.getElementById('datepicker').value !== ''){
+                    document.getElementById('hours_form').submit();
+                } else{
+                    document.getElementById("datepicker").className += ' Red';
+                }
+            }
+
+            function submit_off_days_form(){
+                if(document.getElementById('frompicker').value !== ''
+                        && document.getElementById('topicker').value !== ''){
+                    document.getElementById('off_days').submit();
+                }
+
+                if(document.getElementById('frompicker').value === ''){
+                    document.getElementById("frompicker").className += ' Red';
+                }
+
+                if(document.getElementById('topicker').value === '') {
+                    document.getElementById("topicker").className += ' Red';
+                }
+            }
+
+            $('#datepicker').datepicker({ format: 'dd-mm-yyyy' });
+            $('#frompicker').datepicker({ format: 'dd-mm-yyyy' });
+            $('#topicker').datepicker({ format: 'dd-mm-yyyy' });
+
+            let days_off_window = $('#days_off_window');
+            let work_days_window = $('#work_days_window');
+            days_off_window.attr("hidden", true);
+            work_days_window.attr("hidden", true);
+
+            $('#toggle_days_off').click(function() {
+                days_off_window.attr("hidden", !days_off_window.is(":hidden"));
+
+                if(days_off_window.is(":hidden")){
+                    $('#txt_off').text('SHOW DAYS OFF');
+
+                    if(work_days_window.is(":hidden")){
+                        $('#off_days').attr("hidden", false);
+                        $('#txt_work').text('SHOW WORK DAYS');
+                    }else{
+                        $('#off_days').attr("hidden", true);
+                        $('#txt_work').text('HIDE WORK DAYS');
+                    }
+                }else{
+                    $('#txt_off').text('HIDE DAYS OFF');
+                    $('#off_days').attr("hidden", true);
+                    work_days_window.attr("hidden", true);
+                    $('#txt_work').text('SHOW WORK DAYS');
+                }
+            });
+
+            $('#toggle_work_days').click(function() {
+                work_days_window.attr("hidden", !work_days_window.is(":hidden"));
+
+                if(work_days_window.is(":hidden")){
+                    $('#txt_work').text('SHOW WORK DAYS');
+
+                    if(days_off_window.is(":hidden")){
+                        $('#off_days').attr("hidden", false);
+                        $('#txt_off').text('SHOW DAYS OFF');
+                    }else{
+                        $('#off_days').attr("hidden", true);
+                        $('#txt_off').text('HIDE DAYS OFF');
+                    }
+                }else{
+                    $('#txt_work').text('HIDE WORK DAYS');
+                    $('#off_days').attr("hidden", true);
+                    $('#txt_off').text('SHOW DAYS OFF');
+                    days_off_window.attr("hidden", true);
+                }
+            });
+        </script>
+
+    </body>
+</html>

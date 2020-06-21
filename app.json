@@ -1,0 +1,21 @@
+{
+  "name": "Mediaan Days",
+  "description": "Days to summer counter.",
+  "repository": "https://github.com/icaka98/mediaan_days",
+  "logo": "",
+  "keywords": ["django", "python", "static"],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
