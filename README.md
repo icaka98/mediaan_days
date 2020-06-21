@@ -20,7 +20,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://mediaan-days.herokuapp.com/)
 
 This project is built with the intention of organizing the student's time schedule when he/she is also working at a company. Note that the exact situation that this website could be helpful is when the company and the university are in joint collaboration.
 
@@ -79,4 +79,4 @@ Codebase Link: [https://github.com/icaka98/mediaan_days](https://github.com/icak
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: git_images/present.png
