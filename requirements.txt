@@ -3,7 +3,7 @@ PyYAML==4.2b1
 ua-parser==0.8.0
 user-agents==1.1.0
 cycler==0.10.0
-Django==2.2.13
+Django==2.2.27
 fuzzywuzzy==0.17.0
 grpcio==1.15.0
 kiwisolver==1.0.1
