@@ -5,7 +5,7 @@ user-agents==1.1.0
 cycler==0.10.0
 Django==2.2.28
 fuzzywuzzy==0.17.0
-grpcio==1.15.0
+grpcio==1.53.0
 kiwisolver==1.0.1
 matplotlib==3.0.1
 numpy
